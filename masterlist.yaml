@@ -410,32 +410,42 @@ globals:
     subs:
       - 'F4SE'
       - '[F4SE](https://f4se.silverlock.org)'
-    condition: 'file("F4SE/Plugins/([^\.]+\.dll)") and not file("../f4se(vr)?_loader\.exe")'
+    condition: 'file("F4SE/Plugins/([^\.]+\.dll)") and not file("../f4se_loader.exe")'
 
   # Required Scripts
   - <<: *scriptExtenderRequiredScripts
     subs:
       - 'Fallout 4 Script Extender'
       - '[F4SE](https://f4se.silverlock.org)'
-    condition: 'not file("scripts/F4SE.pex") and ((file("../Fallout4.exe") and file("../f4se_loader.exe")) or (file("../Fallout4VR.exe") and file("../f4sevr_loader.exe")))'
+    condition: 'not file("scripts/F4SE.pex") and file("../f4se_loader.exe")'
 
 # Fallout 4 - Latest Version
+  # Fallout 4 NG
+  - <<: *versionOldX
+    subs: [ '**Fallout 4 NG**' ]
+    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.163.0", >) and version("../Fallout4.exe", "1.10.980.0", <)'
+  - <<: *versionUpToDateX
+    subs: [ '**Fallout 4 NG**' ]
+    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.980.0", >=)'
+  # Fallout 4
   - <<: *versionOldX
     subs: [ '**Fallout 4**' ]
-    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.163.0", <) and file("../Fallout4.exe")'
+    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.163.0", <)'
   - <<: *versionUpToDateX
     subs: [ '**Fallout 4**' ]
-    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.163.0", >=) and file("../Fallout4.exe")'
+    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.163.0", ==)'
 
 # F4SE - Latest Version
   - <<: *versionOldX
-    subs: [ '**Script Extender ([F4SE](https://f4se.silverlock.org))**' ]
-    condition: 'version("../f4se_loader.exe", "0.0.6.23", <) and file("../Fallout4.exe") and file("../f4se_loader.exe")'
+    subs: [ '**[F4SE](https://f4se.silverlock.org)**' ]
+    condition: 'version("../f4se_loader.exe", "0.0.6.23", <) and file("../f4se_loader.exe")'
   - <<: *versionUpToDateX
-    subs: [ '**Script Extender ([F4SE](https://f4se.silverlock.org))**' ]
-    condition: 'version("../f4se_loader.exe", "0.0.6.23", >=) and file("../Fallout4.exe") and file("../f4se_loader.exe")'
+    subs: [ '**F4SE**' ]
+    condition: 'version("../f4se_loader.exe", "0.0.6.23", >=)'
 
 # F4SE - Runtime Compatibility
+  - <<: *versionF4SEIncFO4
+    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.980.0", >=) and version("../f4se_loader.exe", "0.0.6.23", <=) and file("../f4se_loader.exe")'
   - <<: *versionF4SEIncFO4
     condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.163.0", ==) and version("../f4se_loader.exe", "0.0.6.20", <) and file("../f4se_loader.exe")'
   - <<: *versionF4SEIncFO4
@@ -447,9 +457,9 @@ globals:
   - <<: *versionF4SEIncFO4
     condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.120.0", ==) and version("../f4se_loader.exe", "0.0.6.14", <) and file("../f4se_loader.exe")'
   - <<: *versionF4SEIncFO4
-    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.114.0", ==) and not version("../f4se_loader.exe", "0.0.6.13", ==) and file("../f4se_loader.exe")'
+    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.114.0", ==) and not version("../f4se_loader.exe", "0.0.6.13", ==)'
   - <<: *versionF4SEIncFO4
-    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.111.0", ==) and not version("../f4se_loader.exe", "0.0.6.12", ==) and file("../f4se_loader.exe")'
+    condition: 'readable("../Fallout4.exe") and version("../Fallout4.exe", "1.10.111.0", ==) and not version("../f4se_loader.exe", "0.0.6.12", ==)'
 
 # F4SE Plugins - Compatibility
   - <<: *versionXIncY
@@ -522,19 +532,33 @@ plugins:
   - name: 'DLCRobot.esm'
     group: *dlcGroup
     dirty:
+      # v1.10.163
       - <<: *quickClean
         crc: 0xD69027EA
         util: '[FO4Edit v4.1.5 EXPERIMENTAL](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 50
         udr: 38
         nav: 1
+      # v1.10.980
+      - <<: *quickClean
+        crc: 0x8287509F
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 51
+        udr: 38
+        nav: 1
   - name: 'DLCworkshop01.esm'
     group: *dlcGroup
     after: [ 'DLCRobot.esm' ]
     dirty:
+      # v1.10.163
       - <<: *quickClean
         crc: 0x47BAE27E
         util: '[FO4Edit v4.1.5 EXPERIMENTAL](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 3
+      # v1.10.980
+      - <<: *quickClean
+        crc: 0x7EECAA24
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 3
   - name: 'DLCCoast.esm'
     group: *dlcGroup
@@ -544,8 +568,8 @@ plugins:
     dirty:
       - <<: *quickClean
         crc: 0xF1F28026
-        util: '[FO4Edit v4.1.5 EXPERIMENTAL](https://www.nexusmods.com/fallout4/mods/2737)'
-        itm: 84
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 83
         udr: 86
   - name: 'DLCworkshop02.esm'
     group: *dlcGroup
@@ -553,6 +577,9 @@ plugins:
       - 'DLCRobot.esm'
       - 'DLCworkshop01.esm'
       - 'DLCCoast.esm'
+    clean:
+      - crc: 0x83ABC821
+        util: 'FO4Edit v4.1.5f'
   - name: 'DLCworkshop03.esm'
     group: *dlcGroup
     after:
@@ -563,7 +590,7 @@ plugins:
     dirty:
       - <<: *quickClean
         crc: 0xE0089FBB
-        util: '[FO4Edit v4.1.5 EXPERIMENTAL](https://www.nexusmods.com/fallout4/mods/2737)'
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 20
         udr: 10
   - name: 'DLCNukaWorld.esm'
@@ -578,7 +605,7 @@ plugins:
     dirty:
       - <<: *quickClean
         crc: 0x43D25C56
-        util: '[FO4Edit v4.1.5 EXPERIMENTAL](https://www.nexusmods.com/fallout4/mods/2737)'
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 193
         udr: 418
         nav: 7
@@ -593,11 +620,64 @@ plugins:
       - 'DLCNukaWorld.esm'
     clean:
       - crc: 0x9B2A2AAC
-        util: 'FO4Edit v4.0.3'
+        util: 'FO4Edit v4.1.5f'
 
 ###### Creation Club ######
   - name: 'cc[A-Z]{3}F(O|0)4[0-9]{3}.*\.es(l|m)'
     group: *ccGroup
+  ## Base Game ##
+  # Armor Paint Job - Enclave
+  - name: 'ccbgsfo4096-as_enclave.esl'
+    clean:
+      - crc: 0x9FEEDC55
+        util: 'FO4Edit v4.1.5f'
+  # Enclave Remnants
+  - name: 'ccOTMFO4001-Remnants.esl'
+    dirty:
+      - <<: *quickClean
+        crc: 0x7F5B1357
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 1
+  # Halloween Workshop
+  - name: 'ccFSVFO4007-Halloween.esl'
+    clean:
+      - crc: 0x794E415B
+        util: 'FO4Edit v4.1.5f'
+  # Heavy Incinerator
+  - name: 'ccbgsfo4116-heavyflamer.esl'
+    clean:
+      - crc: 0x46D8EE37
+        util: 'FO4Edit v4.1.5f'
+  # Hellfire Power Armor
+  - name: 'ccbgsfo4044-hellfirepowerarmor.esl'
+    clean:
+      - crc: 0xE1873D15
+        util: 'FO4Edit v4.1.5f'
+  # Makeshift Weapon Pack
+  - name: 'ccSBJFO4003-Grenade.esl'
+    clean:
+      - crc: 0xACD2EE1A
+        util: 'FO4Edit v4.1.5f'
+  # Tesla Cannon
+  - name: 'ccbgsfo4046-tescan.esl'
+    dirty:
+      - <<: *quickClean
+        crc: 0x6A178F10
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 10
+  # Weapon Paint Job - Enclave
+  - name: 'ccbgsfo4110-ws_enclave.esl'
+    clean:
+      - crc: 0x6F3E5A0A
+        util: 'FO4Edit v4.1.5f'
+  # X-02 Power Armor
+  - name: 'ccbgsfo4115-x02.esl'
+    dirty:
+      - <<: *quickClean
+        crc: 0x0B9FC240
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 7
+  ## Creation Club ##
   # Armor Paint Job - Aquatic Camo
   - name: 'ccbgsfo4092-as_camoblue.esl'
     clean:
@@ -632,11 +712,6 @@ plugins:
   - name: 'ccbgsfo4094-as_camotan.esl'
     clean:
       - crc: 0xABFEDE4F
-        util: 'FO4Edit v4.0.2j'
-  # Armor Paint Job - Enclave
-  - name: 'ccbgsfo4096-as_enclave.esl'
-    clean:
-      - crc: 0x243D95EC
         util: 'FO4Edit v4.0.2j'
   # Armor Paint Job - Gunners
   - name: 'ccgcafo4014-factionas03gun.esl'
@@ -1046,11 +1121,6 @@ plugins:
     clean:
       - crc: 0x67849193
         util: 'FO4Edit v4.0.2j'
-  # Weapon Paint Job - Enclave
-  - name: 'ccbgsfo4110-ws_enclave.esl'
-    clean:
-      - crc: 0xC29B0419
-        util: 'FO4Edit v4.0.2j'
   # Weapon Paint Job - Gunners
   - name: 'ccgcafo4004-factionws04gun.esl'
     clean:
@@ -1162,11 +1232,6 @@ plugins:
     clean:
       - crc: 0x98B17D05
         util: 'FO4Edit v4.0.3'
-  # Hellfire Power Armor
-  - name: 'ccbgsfo4044-hellfirepowerarmor.esl'
-    clean:
-      - crc: 0xC69A07D2
-        util: 'FO4Edit v4.0.2j'
   # Horse Power Armor
   - name: 'ccbgsfo4038-horsearmor.esl'
     clean:
@@ -1197,16 +1262,6 @@ plugins:
     clean:
       - crc: 0xDAAD1A9E
         util: 'FO4Edit v4.0.3'
-  # X-02 Power Armor
-  - name: 'ccbgsfo4115-x02.esl'
-    dirty:
-      - <<: *quickClean
-        crc: 0xE543C619
-        util: '[FO4Edit v4.0.2j](https://www.nexusmods.com/fallout4/mods/2737)'
-        itm: 7
-    clean:
-      - crc: 0x7C8D76A7
-        util: 'FO4Edit v4.0.2j'
 
   # Anti-Material Rifle
   - name: 'ccfrsfo4002-antimaterielrifle.esl'
@@ -1227,11 +1282,6 @@ plugins:
   - name: 'ccfrsfo4001-handmadeshotgun.esl'
     clean:
       - crc: 0x572E30C2
-        util: 'FO4Edit v4.0.2j'
-  # Heavy Incinerator
-  - name: 'ccbgsfo4116-heavyflamer.esl'
-    clean:
-      - crc: 0xF1AFE663
         util: 'FO4Edit v4.0.2j'
   # Manwell Rifle Set
   - name: 'ccsbjfo4002_manwellrifle.esl'
@@ -1268,16 +1318,6 @@ plugins:
     clean:
       - crc: 0xFD3AA32F
         util: 'FO4Edit v4.0.2j'
-  # Tesla Cannon
-  - name: 'ccbgsfo4046-tescan.esl'
-    dirty:
-      - <<: *quickClean
-        crc: 0xF67EB2BF
-        util: '[FO4Edit v4.0.3](https://www.nexusmods.com/fallout4/mods/2737)'
-        itm: 10
-    clean:
-      - crc: 0xDF5F6EBD
-        util: 'FO4Edit v4.0.3'
   # Tunnel Snakes Rule!
   - name: 'ccrzrfo4001-tunnelsnakes.esm'
     dirty:
