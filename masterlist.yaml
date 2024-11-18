@@ -528,15 +528,46 @@ groups:
     description: 'A group for FROST modules that need to be sorted late.'
     after: [ *horizonGroup ]
 
-  - name: &worldSettingsGroup Worldspace Settings
-    description: 'A group for modules that need to be loaded late to preserve worldspace settings.'
+  - name: &mediumPriorityGroup Medium Priority Overrides
     after: [ *frostGroup ]
 
-  - name: &lateChangesGroup Late Fixes & Changes
+  - name: &coreGroup Core Mods
+    after: [ *mediumPriorityGroup ]
+
+  - name: &coreEarlyPatchesGroup Core Mods - Early Patches
+    after: [ *coreGroup ]
+
+  - name: &coreTweaksGroup Core Mods - Tweaks
+    after: [ *coreEarlyPatchesGroup ]
+
+  - name: &coreAddonsGroup Core Mods - Add-ons
+    after: [ *coreTweaksGroup ]
+
+  - name: &coreLatePatchesGroup Core Mods - Late Patches
+    after: [ *coreAddonsGroup ]
+
+  - name: &highPriorityGroup High Priority Overrides
+    after: [ *coreLatePatchesGroup ]
+
+  - name: &lateLoadersGroup Late Loaders
+    after: [ *highPriorityGroup ]
+
+  - name: &latePatchesGroup Late Patches
+    after: [ *lateLoadersGroup ]
+
+  - name: &worldSettingsGroup Worldspace Settings
+    description: 'A group for modules that need to be loaded late to preserve worldspace settings.'
+    after: [ *latePatchesGroup ]
+
+  - name: &conflictResPatchGroup Conflict Resolution Patches
+    description: 'A group for patches that resolve conflicts.'
     after: [ *worldSettingsGroup ]
 
   - name: &dynamicPatchesGroup Dynamic Patches
-    after: [ *lateChangesGroup ]
+    after: [ *conflictResPatchGroup ]
+
+  - name: &lateChangesGroup Late Fixes & Changes
+    after: [ *dynamicPatchesGroup ]
 
 plugins:
 ###### Official DLC plugins ######
@@ -4522,7 +4553,7 @@ plugins:
 
   - name: 'Step Patch - (Conflict Resolution|Lighting and Weather)\.esp'
     url: ['https://www.nexusmods.com/fallout4/mods/74193/']
-    group: *lateChangesGroup
+    group: *conflictResPatchGroup
 
 ###### FROST Survival Simulator ######
   - name: 'FROST.esp'
