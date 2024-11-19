@@ -520,13 +520,9 @@ groups:
   - name: &scrapGroup Scrap Everything
     after: [ *fhoGroup ]
 
-  - name: &horizonGroup Horizon
-    description: 'A group for Horizon modules that need to be sorted late.'
-    after: [ *scrapGroup ]
-
   - name: &frostGroup FROST Survival Simulator
     description: 'A group for FROST modules that need to be sorted late.'
-    after: [ *horizonGroup ]
+    after: [ *scrapGroup ]
 
   - name: &mediumPriorityGroup Medium Priority Overrides
     after: [ *frostGroup ]
@@ -5029,10 +5025,11 @@ plugins:
         itm: 4
 
 ###### Horizon ######
-  - name: 'Z_(Architect|Horizon)\.es(m|p)'
-    url: [ 'https://www.nexusmods.com/fallout4/mods/17374/' ]
   - name: 'Z_Horizon.esp'
-    group: *horizonGroup
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/17374/'
+        name: 'Horizon'
+    group: *coreGroup
     after:
       - 'advancedAITweaks.esp'
       - 'Arbitration - Better Combat AI.esp'
@@ -5070,65 +5067,210 @@ plugins:
       # Survival Mode Mods
       - 'FROST.esp'
       - 'SurvivalOptions.esp'
-    msg:
-      - <<: *patchIncluded
-        subs: [ 'Automatron' ]
-        condition: 'active("DLCRobot.esm") and not active("Z_Horizon_DLC_Automatron.esp") and not active("Z_Horizon_DLC_All.esp")'
-      - <<: *patchIncluded
-        subs: [ 'Far Harbor' ]
-        condition: 'active("DLCCoast.esm") and not active("Z_Horizon_DLC_FarHarbor.esp") and not active("Z_Horizon_DLC_All.esp")'
-      - <<: *patchIncluded
-        subs: [ 'Nuka World' ]
-        condition: 'active("DLCNukaWorld.esm") and not active("Z_Horizon_DLC_Nuka.esp") and not active("Z_Horizon_DLC_All.esp")'
-      - <<: *patchIncluded
-        subs: [ 'Wasteland Workshop' ]
-        condition: 'active("DLCworkshop01.esm") and not active("Z_Horizon_DLC_Workshop01.esp") and not active("Z_Horizon_DLC_All.esp")'
-      - <<: *patchIncluded
-        subs: [ 'Contraptions Workshop' ]
-        condition: 'active("DLCworkshop02.esm") and not active("Z_Horizon_DLC_Workshop02.esp") and not active("Z_Horizon_DLC_All.esp")'
-      - <<: *patchIncluded
-        subs: [ 'Vault-Tec Workshop' ]
-        condition: 'active("DLCworkshop03.esm") and not active("Z_Horizon_DLC_Workshop03.esp") and not active("Z_Horizon_DLC_All.esp")'
-      - <<: *essentialFiles
-        type: error
-        subs: [ '**scripts/hardcore/hc_managerscript.pex**' ]
-        condition: 'file("scripts/hardcore/hc_managerscript.pex") and version("Z_Horizon.esp", "1.8.0", ==) and not checksum("scripts/hardcore/hc_managerscript.pex", 2FEC9CFC)'
-
-  - name: 'Z_Horizon_DLC_(Automatron|FarHarbor|Nuka|Workshop\d\d)\.esp'
-    msg:
-      - <<: *alreadyInX
-        subs: [ 'Z_Horizon_DLC_All.esp' ]
-        condition: 'active("Z_Horizon_DLC_All.esp")'
-
-  - name: 'Z_Architect_(EnhancedSettlements(_DLC)?|HomePlate)\.esp'
-    group: *horizonGroup
-    after: [ 'Z_Horizon.esp' ]
-  - name: 'Z_Architect_EnhancedSettlements_DLC.esp'
-    after: [ 'Z_Architect_EnhancedSettlements.esp' ]
-  - name: 'Z_Architect_HomePlate.esp'
+  - name: 'Z_Horizon_DLC_All.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/17374/'
+        name: 'Horizon'
+  ### Horizon - Official Patches ###
+  # Crossbows of the Commonwealth #
+  - name: 'Z_Horizon_Patch_Crossbow.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/17374/'
+        name: 'Horizon'
+    after: [ 'Z_Horizon_DLC_All.esp' ]
+  ### Horizon - Official Creation Club Patches ###
+  - name: 'Z_Horizon_Patch_CC_(ArmorPaint_(Army|Enclave|Gunner|Shark|Institute|Minutemen|Nuka|Pickman|Railroad|Shi)|BrandedAttire|HandmadeShotgun|HorseArmor|Prey|PowerArmorSkin_(Blue|Chrome|Camo01|Green|Black|Orange|Patriotic|Pink|Purple|Red|Camo02|Tan|White|Yellow)|WeaponPaint_(Army|AtomCats|Enclave|Gunner|HotRod|Shark|Minutemen|Pickman|Railroad|Shi|Institute))\.es[lp]'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/17374/'
+        name: 'Horizon'
+  # Armor Paint Job - Army #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Army.esl'
+  # Armor Paint Job - Enclave #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Enclave.esl'
+  # Armor Paint Job - Gunners #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Gunner.esl'
+  # Armor Paint Job - Hot Rod Shark #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Shark.esl'
+  # Armor Paint Job - Institute #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Institute.esl'
+  # Armor Paint Job - Minutemen #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Minutemen.esl'
+  # Armor Paint Job - Nuka Cherry #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Nuka.esl'
+  # Armor Paint Job - Pickmen #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Pickman.esl'
+  # Armor Paint Job - Railroad #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Railroad.esl'
+  # Armor Paint Job - Shi #
+  - name: 'Z_Horizon_Patch_CC_ArmorPaint_Shi.esl'
+  # Graphic T-Shirt Pack #
+  - name: 'Z_Horizon_Patch_CC_BrandedAttire.esp'
     after:
-      - 'Z_Architect_EnhancedSettlements.esp'
-      - 'Z_Architect_EnhancedSettlements_DLC.esp'
-
-  - name: 'Z_(Architect_Extras|BlurRemoval|CameraAddon|Extras)\.esp'
-    after: [ 'Z_Horizon.esp' ]
+      - 'Z_Horizon.esp'
+      - 'Z_Horizon_DLC_All.esp'
+  # Handmade Shotgun #
+  - name: 'Z_Horizon_Patch_CC_HandmadeShotgun.esp'
+    after: [ 'Z_Horizon_DLC_All.esp' ]
+  # Horse Power Armor #
+  - name: 'Z_Horizon_Patch_CC_HorseArmor.esp'
+    after: [ 'Z_Horizon_DLC_All.esp' ]
+  # Morgan's Space Suit #
+  - name: 'Z_Horizon_Patch_CC_Prey.esp'
+    after: [ 'Z_Horizon_DLC_All.esp' ]
+  # Power Armor Paint Job - Blue #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Blue.esl'
+  # Power Armor Paint Job - Chrome #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Chrome.esl'
+  # Power Armor Paint Job - Desert Camo #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Camo01.esl'
+  # Power Armor Paint Job - Green #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Green.esl'
+  # Power Armor Paint Job - Onyx #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Black.esl'
+  # Power Armor Paint Job - Orange #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Orange.esl'
+  # Power Armor Paint Job - Patriotic #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Patriotic.esl'
+  # Power Armor Paint Job - Pink #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Pink.esl'
+  # Power Armor Paint Job - Purple #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Purple.esl'
+  # Power Armor Paint Job - Red #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Red.esl'
+  # Power Armor Paint Job - Swamp Camo #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Camo02.esl'
+  # Power Armor Paint Job - Tan #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Tan.esl'
+  # Power Armor Paint Job - White #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_White.esl'
+  # Power Armor Paint Job - Yellow #
+  - name: 'Z_Horizon_Patch_CC_PowerArmorSkin_Yellow.esl'
+  # Weapon Paint Job - Army #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_Army.esl'
+  # Weapon Paint Job - Atom Cats #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_AtomCats.esl'
+  # Weapon Paint Job - Enclave #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_Enclave.esl'
+  # Weapon Paint Job - Gunners #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_Gunner.esl'
+  # Weapon Paint Job - Hot Rod Flames #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_HotRod.esl'
+  # Weapon Paint Job - Hot Rod Shark #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_Shark.esl'
+  # Weapon Paint Job - Minutemen #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_Minutemen.esl'
+  # Weapon Paint Job - Pickman #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_Pickman.esl'
+  # Weapon Paint Job - Railroad #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_Railroad.esl'
+  # Weapon Paint Job - Shi #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_Shi.esl'
+  # Weapon Paint Job - The Institute #
+  - name: 'Z_Horizon_Patch_CC_WeaponPaint_Institute.esl'
+  ### Horizon - Tweaks ###
+  - name: 'Z_BlurRemoval(_Low|_Original|_Vanilla)?\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/17374/'
+        name: 'Horizon'
+  - name: 'Z_BlurRemoval.esp'
+  - name: 'Z_BlurRemoval_Low.esp'
+  - name: 'Z_BlurRemoval_Original.esp'
+  - name: 'Z_BlurRemoval_Vanilla.esp'
+  - name: 'Z_CameraAddon.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/17374/'
+        name: 'Horizon'
+  - name: 'Z_Horizon_(DEFUI|Desolation|Mode_Scavenger|Optional_ShortNaming|StrictCarryWeight)\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/17374/'
+        name: 'Horizon'
+  - name: 'Z_Horizon_DEFUI.esp'
+    group: *coreTweaksGroup
   - name: 'Z_Horizon_Desolation.esp'
-    after: [ 'Z_Horizon_Mode_Scavenger.esp' ]
-  - name: 'Z_Horizon_DEFUI(_MenusOnly)?\.esp'
-    msg:
-      - <<: *useOnlyOneX
-        subs: [ 'Horizon DEFUI' ]
-        condition: 'many("Z_Horizon_DEFUI(_MenusOnly)?\.esp")'
-  - name: 'Z_Horizon_Diff_(Cutthroat|Novice|Outcast|Veteran|Wanderer)\.esp'
-    msg:
-      - <<: *useOnlyOneX
-        subs: [ 'Horizon Difficulty' ]
-        condition: 'many("Z_Horizon_Diff_(Cutthroat|Novice|Outcast|Veteran|Wanderer)\.esp")'
-  - name: 'Z_SettlementLimits.esp'
-    msg:
-      - <<: *alreadyInX
-        subs: [ 'Z_Architect_EnhancedSettlements.esp' ]
-        condition: 'active("Z_Architect_EnhancedSettlements.esp")'
+    group: *coreTweaksGroup
+    after:
+      - 'Z_Horizon_DEFUI.esp'
+      - 'Z_Horizon_Optional_ShortNaming.esp'
+    inc: [ 'Z_Horizon_Mode_Scavenger.esp' ]
+  - name: 'Z_Horizon_Mode_Scavenger.esp'
+    group: *coreTweaksGroup
+    after:
+      - 'Z_Horizon_DEFUI.esp'
+      - 'Z_Horizon_Optional_ShortNaming.esp'
+    inc: [ 'Z_Horizon_Desolation.esp' ]
+  - name: 'Z_Horizon_Optional_ShortNaming.esp'
+    group: *coreTweaksGroup
+    after: [ 'Z_Horizon_DEFUI.esp' ]
+  - name: 'Z_Horizon_StrictCarryWeight.esp'
+    group: *coreTweaksGroup
+    after:
+      - 'Z_Horizon_DEFUI.esp'
+      - 'Z_Horizon_Desolation.esp'
+      - 'Z_Horizon_Mode_Scavenger.esp'
+      - 'Z_Horizon_Optional_ShortNaming.esp'
+  ### Horizon - Add-ons ###
+  - name: 'Z_Architect(_(CaravanRobots|Empire|EnhancedSettlements|EnhancedSettlements_DLC|Extras|HomePlate|Lighting|TexturePack01|Weather|WorldFixes|WorldManager|WorldManager_DLC))?\.es[mp]'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/17374/'
+        name: 'Horizon'
+  - name: 'Z_Architect.esm'
+  - name: 'Z_Architect_CaravanRobots.esp'
+    group: *coreAddonsGroup
+    after:
+      - 'Z_Architect_Extras.esp'
+      - 'Z_Extras.esp'
+  - name: 'Z_Architect_Empire.esp'
+    group: *coreAddonsGroup
+    after:
+      - 'Z_Architect_CaravanRobots.esp'
+      - 'Z_Architect_Extras.esp'
+      - 'Z_Architect_HomePlate.esp'
+      - 'Z_Extras.esp'
+  - name: 'Z_Architect_EnhancedSettlements.esp'
+    group: *coreAddonsGroup
+    after:
+      - 'Z_Architect_CaravanRobots.esp'
+      - 'Z_Architect_Empire.esp'
+      - 'Z_Architect_Extras.esp'
+      - 'Z_Architect_HomePlate.esp'
+      - 'Z_Extras.esp'
+  - name: 'Z_Architect_EnhancedSettlements_DLC.esp'
+    group: *coreAddonsGroup
+    after:
+      - 'Z_Architect_CaravanRobots.esp'
+      - 'Z_Architect_Empire.esp'
+      - 'Z_Architect_Extras.esp'
+      - 'Z_Architect_EnhancedSettlements.esp'
+      - 'Z_Architect_HomePlate.esp'
+      - 'Z_Extras.esp'
+  - name: 'Z_Architect_Extras.esp'
+    group: *coreAddonsGroup
+    after: [ 'Z_Extras.esp' ]
+  - name: 'Z_Architect_HomePlate.esp'
+    group: *coreAddonsGroup
+    after:
+      - 'Z_Architect_CaravanRobots.esp'
+      - 'Z_Architect_Extras.esp'
+      - 'Z_Extras.esp'
+  - name: 'Z_Architect_Lighting.esp'
+    group: *highPriorityGroup
+  - name: 'Z_Architect_TexturePack01.esp'
+  - name: 'Z_Architect_Weather.esp'
+    after: [ 'Z_Architect_TexturePack01.esp' ]
+  - name: 'Z_Architect_WorldFixes.esp'
+    group: *underridesGroup
+    after:
+      - 'Z_Architect_WorldManager.esp'
+      - 'Z_Architect_WorldManager_DLC.esp'
+  - name: 'Z_Architect_WorldManager.esp'
+    group: *underridesGroup
+  - name: 'Z_Architect_WorldManager_DLC.esp'
+    group: *underridesGroup
+  - name: 'Z_Extras.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/17374/'
+        name: 'Horizon'
+    group: *coreAddonsGroup
 
 ###### Sim Settlements ######
   - name: 'SimSettlements.esm'
