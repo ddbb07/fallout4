@@ -553,11 +553,8 @@ groups:
     description: 'A group for the mod Faction Housing Overhaul.'
     after: [ *interiorLightingGroup ]
 
-  - name: &scrapGroup Scrap Everything
-    after: [ *fhoGroup ]
-
   - name: &mediumPriorityGroup Medium Priority Overrides
-    after: [ *scrapGroup ]
+    after: [ *fhoGroup ]
 
   - name: &coreGroup Core Mods
     after: [ *mediumPriorityGroup ]
@@ -6775,7 +6772,6 @@ plugins:
 
   - name: 'Scrap Everything - Ultimate Edition.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/5320/' ]
-    group: *scrapGroup
     clean:
       - crc: 0x7296B759
         util: 'FO4Edit v4.0.3'
@@ -6787,7 +6783,6 @@ plugins:
         condition: 'active("Scrap Everything - Ultimate Edition.esp")'
         subs: [ 'Scrap Everything - Ultimate Edition.esp' ]
   - name: 'Scrap Everything - Core.esp'
-    group: *scrapGroup
     msg:
       - <<: *patchIncluded
         subs: [ 'Automatron' ]
