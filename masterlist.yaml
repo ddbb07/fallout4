@@ -4282,9 +4282,14 @@ plugins:
   - name: 'PLI_USAF_Satellite_Station_Olivia.esp'
     after:
       - 'EnhancedLightsandFX.esp'
+      - 'FCF_Hotfix.esp'
+      - 'FCF_Main.esp'
+      - 'FCF_Previsibines.esp'
+      - 'FROST.esp'
       - 'Raider Children.esp'
       - 'ProjectValkyrie.esp'
       - 'PRP.esp'
+      - 'PRPFX-Merged.esp'
     msg:
       - <<: *patchProvided
         subs: [ 'Enhanced Lights and FX' ]
@@ -4293,8 +4298,8 @@ plugins:
         subs: [ 'Mutilated Dead Bodies' ]
         condition: 'active("MutilatedDeadBodies.esp") and not active("PLIUSAFSSO - MDB Patch.esp")'
     clean:
-      - crc: 0xB3EC0D5B
-        util: 'FO4Edit v4.0.4b'
+      - crc: 0x60BE3AED
+        util: 'FO4Edit v4.1.5k'
 
   - name: 'RedRocket_DC_F-ESL.esp'
     url:
