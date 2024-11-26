@@ -4641,6 +4641,7 @@ plugins:
       - crc: 0xFC196C90
         util: 'FO4Edit v4.1.5k'
   - name: 'SimplifiedSorting_aFrostMod.esp'
+    group: *coreLatePatchesGroup
     clean:
       - crc: 0x6CB98211
         util: 'FO4Edit v4.1.5k'
@@ -4678,6 +4679,7 @@ plugins:
         util: 'FO4Edit v4.1.5k'
   # JSRS Sound Mod #
   - name: 'FCF_Previsibines-JSRSRegions.esp'
+    after: [ 'FCF_Previsibines-MMHelipad.esp' ]
     clean:
       - crc: 0x4F55738C
         util: 'FO4Edit v4.1.5k'
@@ -4766,11 +4768,13 @@ plugins:
         name: 'Frost Official Updates (Redux)'
   # Campsite - Simple Wasteland Camping #
   - name: 'RedsFrostCampsitePatch.esp'
+    group: *coreLatePatchesGroup
     clean:
       - crc: 0xA506ADC8
         util: 'FO4Edit v4.1.5k'
   # Survival Configuration Menu #
   - name: 'RedsFrostSCM.esp'
+    group: *coreLatePatchesGroup
     clean:
       - crc: 0xF555F82E
         util: 'FO4Edit v4.1.5k'
