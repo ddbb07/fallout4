@@ -4433,14 +4433,17 @@ plugins:
       - 'BostonFPSFixAIO.esp'
       - 'PRP.esp'
 
-  - name: 'WCLI(_NatickSubstation|NS_.*)\.esp'
+  - name: 'WCLI_NatickSubstation.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/64755/'
         name: 'We Can Live In - Natick Substation'
-    group: *mediumPriorityGroup
-  - name: 'WCLI_NatickSubstation.esp'
     after:
       - 'Another Pine Forest Mod.esp'
+      # The rules below are not strictly required, added to match expected order.
+      - '3DNPC_FO4.esp'
+      - 'BTInteriors_Project.esp'
+      - 'FCF_Main.esp'
+      - 'prp.esp'
     msg:
       - <<: *compatIssuesWithX
         subs: [ 'Natick Power Substation Player Settlement' ]
@@ -4481,7 +4484,13 @@ plugins:
       - <<: *patchProvided
         subs: [ 'Waushakum Pond Settlement' ]
         condition: 'active("PondSettlement.esp") and (not active("WCLINS_Previs.esp") or (not checksum("WCLINS_Previs.esp", 0BEADEC1) and not checksum("WCLINS_Previs.esp", 26F48A9B) and not checksum("WCLINS_Previs.esp", 8004C20D)))'
-
+    clean:
+      - crc: 0x7FF4130D
+        util: 'FO4Edit v4.1.5k'
+  - name: 'WCLINS_((AF|DHBOSS|FR|FRNR|MW)_Patch|Previs)\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/64755/'
+        name: 'We Can Live In - Natick Substation'
   - name: 'WCLINS_Previs.esp'
     after:
       - 'WCLINS_AF_Patch.esp'
