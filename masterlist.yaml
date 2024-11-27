@@ -2467,12 +2467,17 @@ plugins:
 
 ###### AudioVisual - Water ######
   - name: 'Vivid Waters.esp'
-    url: [ 'https://www.nexusmods.com/fallout4/mods/16425/' ]
-    group: *worldSettingsGroup
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/16425/'
+        name: 'Vivid Waters - a Water overhaul for Fallout 4'
+    group: *waterOverhaulsGroup
     after:
       - 'WET.esp'
       - 'WET Murkier.esp'
       - 'WET Clearer.esp'
+    clean:
+      - crc: 0xC629F6E4
+        util: 'FO4Edit v4.1.5k'
 
   - name: 'WET.esp'
     url:
