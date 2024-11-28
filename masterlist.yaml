@@ -2499,19 +2499,18 @@ plugins:
         util: 'FO4Edit v4.1.5k'
 
 ###### AudioVisual - Weather & Lighting ######
-  - name: 'Clarity( Decreased Saturation Addon| Far Harbor Fog Clouds Removed| Stronger Godrays Addon)?\.esp'
+  - name: 'Clarity( Decreased Saturation Addon| Far Harbor Fog Clouds Removed| Stronger Godrays Addon|TS)?\.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/31991/'
         name: 'Clarity - A Visual Overhaul'
-    group: *lowPriorityGroup
   - name: 'Clarity.esp'
-    after: [ 'WorkshopRearranged.esp' ]
+    inc: [ 'ClarityTS.esp' ]
     msg:
       - <<: *patch3rdParty
         subs:
           - 'True Storms'
           - '[Clarity - True Storms](https://www.nexusmods.com/fallout4/mods/65462/)'
-        condition: 'active("TrueStormsFO4.esm") and not active("TrueStorms_Clarity.esp")'
+        condition: 'version("Clarity.esp", "4.3", ==) and active("TrueStormsFO4.esm") and not active("TrueStorms_Clarity.esp")'
       - <<: *patcherScriptAvailable
         subs:
           - '[FO4Edit](https://www.nexusmods.com/fallout4/mods/2737/)'
@@ -2520,6 +2519,32 @@ plugins:
         subs:
           - '[Synthesis](https://github.com/Mutagen-Modding/Synthesis/)'
           - '[Various Synthesis Patchers](https://www.nexusmods.com/fallout4/mods/66836/)'
+      - <<: *requiresResources
+        subs: [ '[Clarity 4.2](https://www.nexusmods.com/fallout4/mods/31991/)' ]
+        condition: 'not file("Materials/SetDressing/MemoryLounge/MemoryLoungerGlass01.BGEM")'
+    clean:
+      # Version: 4.2
+      - crc: 0xACA71BEF
+        util: 'FO4Edit v4.1.5k'
+      # Version: 4.3
+      - crc: 0x096860FE
+        util: 'FO4Edit v4.1.5k'
+  - name: 'Clarity Decreased Saturation Addon.esp'
+    clean:
+      - crc: 0x07169FC2
+        util: 'FO4Edit v4.1.5k'
+  - name: 'Clarity Far Harbor Fog Clouds Removed.esp'
+    clean:
+      - crc: 0x108D74F5
+        util: 'FO4Edit v4.1.5k'
+  - name: 'Clarity Stronger Godrays Addon.esp'
+    clean:
+      - crc: 0xD920DB36
+        util: 'FO4Edit v4.1.5k'
+  - name: 'ClarityTS.esp'
+    clean:
+      - crc: 0x08CD27DE
+        util: 'FO4Edit v4.1.5k'
 
   - name: 'EnhancedLightsandFX.esp'
     url:
