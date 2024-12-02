@@ -4352,14 +4352,14 @@ plugins:
         util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 5
 
-  - name: 'PLI_?USAF(_Satellite_Station_Olivia|SSO - (ELFX|MDB) Patch)\.esp'
+  - name: 'PLI_USAF_Satellite_Station_Olivia.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/59993/'
         name: 'People Live In - USAF Satellite Station Olivia'
-  - name: 'PLI_USAF_Satellite_Station_Olivia.esp'
     after:
       - 'EnhancedLightsandFX.esp'
       - 'FCF_Hotfix.esp'
+      - 'FCF_HotfixELFX.esp'
       - 'FCF_Main.esp'
       - 'FCF_Previsibines.esp'
       - 'FROST.esp'
@@ -4367,15 +4367,43 @@ plugins:
       - 'ProjectValkyrie.esp'
       - 'PRP.esp'
       - 'PRPFX-Merged.esp'
+      - 'UltraInteriorLighting.esp'
+      - 'Winter Redone.esp'
     msg:
-      - <<: *patchProvided
-        subs: [ 'Enhanced Lights and FX' ]
-        condition: 'active("EnhancedLightsandFX.esp") and not active("PLI_USAFSSO - ELFX Patch.esp")'
       - <<: *patchProvided
         subs: [ 'Mutilated Dead Bodies' ]
         condition: 'active("MutilatedDeadBodies.esp") and not active("PLIUSAFSSO - MDB Patch.esp")'
     clean:
       - crc: 0x60BE3AED
+        util: 'FO4Edit v4.1.5k'
+  - name: 'PLIUSAFSSO(_Previs| - MDB Patch|_MU_Patch|_SS2CH3_Patch)\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/59993/'
+        name: 'People Live In - USAF Satellite Station Olivia'
+  - name: 'PLIUSAFSSO_Previs.esp'
+    after:
+      - 'PLIUSAFSSO - MDB Patch.esp'
+      - 'PLIUSAFSSO_MU_Patch.esp'
+    clean:
+      - crc: 0x5AB506A1
+        util: 'FO4Edit v4.1.5k'
+      # ELFX
+      - crc: 0xAD111166
+        util: 'FO4Edit v4.1.5k'
+  # More Uniques - Unique Weapons Expansion Patch #
+  - name: 'PLIUSAFSSO_MU_Patch.esp'
+    clean:
+      - crc: 0xC3117263
+        util: 'FO4Edit v4.1.5k'
+  # Mutilated Dead Bodies #
+  - name: 'PLIUSAFSSO - MDB Patch.esp'
+    clean:
+      - crc: 0x6EE80370
+        util: 'FO4Edit v4.1.5k'
+  # Sim Settlements 2 - Chapter 3 #
+  - name: 'PLIUSAFSSO_SS2CH3_Patch.esp'
+    clean:
+      - crc: 0x55D37EEE
         util: 'FO4Edit v4.1.5k'
 
   - name: 'RedRocket_DC_F-ESL.esp'
