@@ -5004,6 +5004,28 @@ plugins:
       - crc: 0x11030383
         util: 'FO4Edit v4.1.5k'
 
+  ##### FROST - Items #####
+  - name: 'FROST - Mauser(_308CAL)?\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/57961/'
+        name: 'FROST - Mauser Pistol'
+    group: *coreAddonsGroup
+  - name: 'FROST - Mauser.esp'
+    inc: [ 'Mauser.esp' ]
+    msg:
+      - <<: *includesX
+        subs: [ '[Mauser Pistol](https://www.nexusmods.com/fallout4/mods/14141/)' ]
+        condition: 'file("Mauser.esp")'
+    clean:
+      - crc: 0xA7F079F4
+        util: 'FO4Edit v4.1.5k'
+  - name: 'FROST - Mauser_308CAL.esp'
+    clean:
+      - crc: 0xB6720F90
+        util: 'FO4Edit v4.1.5k'
+
+  ##### FROST - Items - New Weapons #####
+
   ##### FROST - Location Overhauls #####
   - name: 'FROST - Hunkered Down(-Settlements)?\.esp'
     url:
