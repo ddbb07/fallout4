@@ -4804,7 +4804,7 @@ plugins:
       - crc: 0x6CB98211
         util: 'FO4Edit v4.1.5k'
 
-  - name: 'FCF_(Main|Previsibines|Hotfix)\.esp'
+  - name: 'FCF_(Main|Previsibines|Hotfix|HotfixELFX)\.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/59652/'
         name: 'FROST Cell Fixes (FCF)'
@@ -4818,6 +4818,7 @@ plugins:
   - name: 'FCF_Previsibines.esp'
     group: *lateLoadersGroup
     clean:
+      # Vanilla
       - crc: 0xB8064B39
         util: 'FO4Edit v4.1.5k'
   - name: 'FCF_Hotfix.esp'
@@ -4825,8 +4826,17 @@ plugins:
     clean:
       - crc: 0x202BE196
         util: 'FO4Edit v4.1.5k'
+  - name: 'FCF_HotfixELFX.esp'
+    group: *latePatchesGroup
+    clean:
+      # Vanilla
+      - crc: 0x113589EC
+        util: 'FO4Edit v4.1.5k'
+      # Winter Redone
+      - crc: 0x101440DA
+        util: 'FO4Edit v4.1.5k'
   ### FROST Cell Fixes - Patches ###
-  - name: 'FCF_Previsibines-(Drawbridges|JSRSRegions|MFG|MMHelipad.cdx|MMHelipad|Oberland|TheForest|TheMarshlands|WinterRedone)\.esp'
+  - name: 'FCF_Previsibines-(Drawbridges|ELFX|JSRSRegions|MFG|MMHelipad.cdx|MMHelipad|Oberland|TheForest|TheMarshlands|WinterRedone|WinterRedoneELFX)\.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/59652/'
         name: 'FROST Cell Fixes (FCF)'
@@ -4834,6 +4844,11 @@ plugins:
   - name: 'FCF_Previsibines-Drawbridges.esp'
     clean:
       - crc: 0x196158DA
+        util: 'FO4Edit v4.1.5k'
+  # Enhanced Lights and FX #
+  - name: 'FCF_Previsibines-ELFX.esp'
+    clean:
+      - crc: 0xFFF471DF
         util: 'FO4Edit v4.1.5k'
   # JSRS Sound Mod #
   - name: 'FCF_Previsibines-JSRSRegions.esp'
@@ -4871,10 +4886,15 @@ plugins:
   # Winter Redone #
   - name: 'FCF_Previsibines-WinterRedone.esp'
     dirty:
+      # Vanilla
       - <<: *quickClean
         crc: 0x8CD1F208
         util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 2
+  - name: 'FCF_Previsibines-WinterRedoneELFX.esp'
+    clean:
+      - crc: 0x8C32391B
+        util: 'FO4Edit v4.1.5k'
 
   - name: 'FROST - UFO4P Patch.esp'
     url:
