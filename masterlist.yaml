@@ -3441,6 +3441,49 @@ plugins:
       - crc: 0x016DB1E5
         util: 'FO4Edit v4.0.4'
 
+###### Gameplay - Economy & Item Balance ######
+  - name: 'LootedWorld(_DLCCoast|_DLCNukaWorld|_DLCRobot|_TrapRewards)?\.esl'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/62110/'
+        name: 'Looted World'
+  - name: 'LootedWorld.esl'
+    after: [ 'Ownership Fixes.esp' ]
+    tag:
+      - Actors.DeathItem
+      - Delev
+      - Invent.Remove
+      - Relev
+    dirty:
+      - <<: *quickClean
+        crc: 0x689C503D
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 15
+  - name: 'LootedWorld(_DLCCoast|_DLCNukaWorld|_DLCRobot|_TrapRewards)\.esl'
+    after: [ 'LootedWorld.esl' ]
+  - name: 'LootedWorld_DLCCoast.esl'
+    after: [ 'LootedWorld_DLCRobot.esl' ]
+    tag: [ Invent.Remove ]
+    clean:
+      - crc: 0x018A3FD8
+        util: 'FO4Edit v4.1.5k'
+  - name: 'LootedWorld_DLCNukaWorld.esl'
+    after:
+      - 'LootedWorld_DLCCoast.esl'
+      - 'LootedWorld_DLCRobot.esl'
+    tag:
+      - Invent.Remove
+      - Relev
+    clean:
+      - crc: 0x4F13DA63
+        util: 'FO4Edit v4.1.5k'
+  - name: 'LootedWorld_DLCRobot.esl'
+    clean:
+      - crc: 0xD6C9E898
+        util: 'FO4Edit v4.1.5k'
+  - name: 'LootedWorld_TrapRewards.esl'
+    # Do not clean - ITM reverts change made by UFO4P. Removes Reward.
+    tag: [ Delev ]
+
 ###### Gameplay - NPC Balance & Distribution ######
   - name: 'MortalSettlers.esp'
     url:
