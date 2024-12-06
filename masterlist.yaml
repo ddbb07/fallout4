@@ -2762,6 +2762,63 @@ plugins:
       - crc: 0xBA0A331E
         util: 'FO4Edit v4.0.2'
 
+  - name: 'TrueStormsFO4(-FarHarbor(ExtraRads)?|-NukaWorld(-FH-Compat)?|-EarlierSunsets(FH)?|-GlowingSeaExtraRads)?\.es[mp]'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/4472/'
+        name: 'True Storms - Wasteland Edition (Thunder-Rain-Weather Redone)'
+  - name: 'TrueStormsFO4.esm'
+    clean:
+      - crc: 0x55FF3F4C
+        util: 'FO4Edit v4.1.5k'
+  # DLC Patches #
+  - name: 'TrueStormsFO4-FarHarbor.esp'
+    clean:
+      - crc: 0x3D8D8377
+        util: 'FO4Edit v4.1.5k'
+  - name: 'TrueStormsFO4-NukaWorld.esp'
+    after: [ 'TrueStormsFO4-FarHarbor.esp' ]
+    msg:
+      - <<: *alreadyInX
+        subs: [ 'TrueStormsFO4-NukaWorld-FH-Compat.esp' ]
+        condition: 'active("DLCCoast.esm") and active("DLCNukaWorld.esm") and active("TrueStormsFO4-NukaWorld-FH-Compat.esp")'
+    clean:
+      - crc: 0xB787C674
+        util: 'FO4Edit v4.1.5k'
+  - name: 'TrueStormsFO4-NukaWorld-FH-Compat.esp'
+    after:
+      - 'TrueStormsFO4-FarHarbor.esp'
+      - 'TrueStormsFO4-NukaWorld.esp'
+    clean:
+      - crc: 0xBF7144FB
+        util: 'FO4Edit v4.1.5k'
+  # Optional Add-ons #
+  - name: 'TrueStormsFO4-(EarlierSunsets(FH)?|FarHarborExtraRads|GlowingSeaExtraRads)\.esp'
+    after:
+      - 'TrueStormsFO4-FarHarbor.esp'
+      - 'TrueStormsFO4-NukaWorld.esp'
+      - 'TrueStormsFO4-NukaWorld-FH-Compat.esp'
+  - name: 'TrueStormsFO4-EarlierSunsets.esp'
+    dirty:
+      - <<: *quickClean
+        crc: 0x2A812843
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 2
+  - name: 'TrueStormsFO4-EarlierSunsetsFH.esp'
+    req: [ 'TrueStormsFO4.esm' ]
+    after: [ 'TrueStormsFO4-EarlierSunsets.esp' ]
+    clean:
+      - crc: 0x56D16171
+        util: 'FO4Edit v4.1.5k'
+  - name: 'TrueStormsFO4-FarHarborExtraRads.esp'
+    req: [ 'TrueStormsFO4.esm' ]
+    clean:
+      - crc: 0x3AAB7174
+        util: 'FO4Edit v4.1.5k'
+  - name: 'TrueStormsFO4-GlowingSeaExtraRads.esp'
+    clean:
+      - crc: 0x5A642319
+        util: 'FO4Edit v4.1.5k'
+
 ###### Character Appearance - NPC Overhauls ######
   - name: 'BetterSettlers.*\.esp'
     url:
@@ -7012,26 +7069,6 @@ plugins:
     url: [ 'https://www.nexusmods.com/fallout4/mods/22442/' ]
     clean:
       - crc: 0x5fa7e916
-        util: FO4Edit v3.2.1
-  - name: 'TrueStormsFO4.esm'
-    url: [ 'https://www.nexusmods.com/fallout4/mods/4472/' ]
-    clean:
-      - crc: 0x55ff3f4c
-        util: FO4Edit v3.2.1
-  - name: 'TrueStormsFO4-FarHarbor.esp'
-    url: [ 'https://www.nexusmods.com/fallout4/mods/4472/' ]
-    clean:
-      - crc: 0x3d8d8377
-        util: FO4Edit v3.2.1
-  - name: 'TrueStormsFO4-FarHarborExtraRads.esp'
-    url: [ 'https://www.nexusmods.com/fallout4/mods/4472/' ]
-    clean:
-      - crc: 0x3aab7174
-        util: FO4Edit v3.2.1
-  - name: 'TrueStormsFO4-GlowingSeaExtraRads.esp'
-    url: [ 'https://www.nexusmods.com/fallout4/mods/4472/' ]
-    clean:
-      - crc: 0x5a642319
         util: FO4Edit v3.2.1
   - name: 'Unlocked NW items.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/18088/' ]
