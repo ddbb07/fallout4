@@ -3450,6 +3450,7 @@ plugins:
     after:
       - 'community fixes merged.esp'
       - 'Ownership Fixes.esp'
+      - 'ppf.esm'
     tag:
       - Actors.DeathItem
       - Delev
