@@ -714,11 +714,13 @@ plugins:
         util: 'FO4Edit v4.1.5f'
   # Heavy Incinerator
   - name: 'ccbgsfo4116-heavyflamer.esl'
+    tag: [ Delev ]
     clean:
       - crc: 0x46D8EE37
         util: 'FO4Edit v4.1.5f'
   # Hellfire Power Armor
   - name: 'ccbgsfo4044-hellfirepowerarmor.esl'
+    tag: [ Delev ]
     clean:
       - crc: 0xE1873D15
         util: 'FO4Edit v4.1.5f'
@@ -729,6 +731,7 @@ plugins:
         util: 'FO4Edit v4.1.5f'
   # Tesla Cannon
   - name: 'ccbgsfo4046-tescan.esl'
+    tag: [ Delev ]
     dirty:
       - <<: *quickClean
         crc: 0x6A178F10
@@ -741,6 +744,7 @@ plugins:
         util: 'FO4Edit v4.1.5f'
   # X-02 Power Armor
   - name: 'ccbgsfo4115-x02.esl'
+    tag: [ Delev ]
     dirty:
       - <<: *quickClean
         crc: 0x0B9FC240
