@@ -3447,7 +3447,9 @@ plugins:
       - link: 'https://www.nexusmods.com/fallout4/mods/62110/'
         name: 'Looted World'
   - name: 'LootedWorld.esl'
-    after: [ 'Ownership Fixes.esp' ]
+    after:
+      - 'community fixes merged.esp'
+      - 'Ownership Fixes.esp'
     tag:
       - Actors.DeathItem
       - Delev
