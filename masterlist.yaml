@@ -2184,11 +2184,11 @@ plugins:
       - crc: 0x0E248104
         util: 'FO4Edit v4.0.3h (Hotfix 1)'
 
-  - name: '(PPF|PRP)\.es[mp]'
+  - name: '(ppf|prp)\.es[mp]'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/46403/'
         name: 'Previsibines Repair Pack Stable Branch - PRP'
-  - name: 'PRF.esm'
+  - name: 'ppf.esm'
     group: *frameworksGroup
     clean:
       # OG
@@ -2197,7 +2197,7 @@ plugins:
       # NG
       - crc: 0x271F8050
         util: 'FO4Edit v4.1.5k'
-  - name: 'PRP.esp'
+  - name: 'prp.esp'
     group: *preVisCombinedGroup
     inc:
       - 'BostonFPSFixAIO.esp'
