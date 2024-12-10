@@ -5014,6 +5014,56 @@ plugins:
     url: ['https://www.nexusmods.com/fallout4/mods/74193/']
     group: *conflictResPatchGroup
 
+###### 3rd Party Patches - Previs ######
+  - name: 'ELFX-(PreVis|eXoPatch|DCGuard_Overhaul|Firelance2\.5|Hunkered Down|IntWayneGorski|OAR|Phase4DLC|TrainBar)\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/64990/'
+        name: 'ELFX - PreVis PreCombine Patch'
+  - name: 'ELFX-PreVis.esp'
+    after: [ 'prp.esp' ]
+    clean:
+      - crc: 0xB17A1478
+        util: 'FO4Edit v4.1.5k'
+  - name: 'ELFX-eXoPatch.esp'
+    dirty:
+      - <<: *quickClean
+        crc: 0x2FF65C71
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 53
+  # ELFX - PreVis PreCombine Patch - Optional #
+  - name: 'ELFX-(DCGuard_Overhaul|Phase4DLC|TrainBar)\.esp'
+    after: [ 'ELFX-PreVis.esp' ]
+  - name: 'ELFX-(DCGuard_Overhaul|Firelance2\.5|Hunkered Down|IntWayneGorski|OAR|Phase4DLC|TrainBar)\.esp'
+    after: [ 'ELFX-eXoPatch.esp' ]
+  - name: 'ELFX-DCGuard_Overhaul.esp'
+    clean:
+      - crc: 0x7276956B
+        util: 'FO4Edit v4.1.5k'
+  - name: 'ELFX-Firelance2.5.esp'
+    clean:
+      - crc: 0x1341CADC
+        util: 'FO4Edit v4.1.5k'
+  - name: 'ELFX-Hunkered Down.esp'
+    clean:
+      - crc: 0x46E92F58
+        util: 'FO4Edit v4.1.5k'
+  - name: 'ELFX-IntWayneGorski.esp'
+    clean:
+      - crc: 0xBBC5C73A
+        util: 'FO4Edit v4.1.5k'
+  - name: 'ELFX-OAR.esp'
+    clean:
+      - crc: 0x758AC8EC
+        util: 'FO4Edit v4.1.5k'
+  - name: 'ELFX-Phase4DLC.esp'
+    clean:
+      - crc: 0x022C1E84
+        util: 'FO4Edit v4.1.5k'
+  - name: 'ELFX-TrainBar.esp'
+    clean:
+      - crc: 0x547FCE42
+        util: 'FO4Edit v4.1.5k'
+
 ###### FROST Survival Simulator ######
   - name: 'FROST.esp'
     url:
