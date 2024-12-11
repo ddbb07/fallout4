@@ -5079,6 +5079,49 @@ plugins:
     url: ['https://www.nexusmods.com/fallout4/mods/74193/']
     group: *conflictResPatchGroup
 
+  - name: 'Vault4-(eXoPatch|PreVis)\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/61080/'
+        name: 'Fourville - eXoPatch'
+  - name: 'Vault4-eXoPatch.esp'
+    after:
+      - 'Depravity.esp'
+      - 'FastTravelFromQuestHubs.esp'
+    clean:
+      - crc: 0xD61F84C1
+        util: 'FO4Edit v4.1.5k'
+  - name: 'Vault4-PreVis.esp'
+    after: [ 'Vault4-FastTravel.esp' ]
+    clean:
+      - crc: 0x9FA52AC4
+        util: 'FO4Edit v4.1.5k'
+  # ELFX - PreVis PreCombine Patch - Optional #
+  - name: '(Vault4-(Depravity|ELFX-PreVis|FastTravel|HuxsLabcoat)|OutcastsAndRemnants-Locations)\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/61080/'
+        name: 'Fourville - eXoPatch'
+  - name: 'OutcastsAndRemnants-Locations.esp'
+    clean:
+      - crc: 0x07D23297
+        util: 'FO4Edit v4.1.5k'
+  - name: 'Vault4-Depravity.esp'
+    clean:
+      - crc: 0x2EF262D4
+        util: 'FO4Edit v4.1.5k'
+  - name: 'Vault4-ELFX-PreVis.esp'
+    after: [ 'Vault4-PreVis.esp' ]
+    clean:
+      - crc: 0xD7DB3B41
+        util: 'FO4Edit v4.1.5k'
+  - name: 'Vault4-FastTravel.esp'
+    clean:
+      - crc: 0xD7EE9534
+        util: 'FO4Edit v4.1.5k'
+  - name: 'Vault4-HuxsLabcoat.esp'
+    clean:
+      - crc: 0x408762EE
+        util: 'FO4Edit v4.1.5k'
+
 ###### FROST Survival Simulator ######
   - name: 'FROST.esp'
     url:
