@@ -4975,6 +4975,33 @@ plugins:
         util: 'FO4Edit v4.0.4'
 
 ###### 3rd Party Patches ######
+  - name: 'DiamondCity(Expansion-eXoPatch|-PreVis(-Ambience)?)\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/66724/'
+        name: 'Diamond City Expansion - eXoPatch'
+  - name: 'DiamondCityExpansion-eXoPatch.esp'
+    dirty:
+      - <<: *quickClean
+        crc: 0x3F041E21
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 33
+  - name: 'DiamondCity-PreVis.esp'
+    after:
+      - 'PRP.esp'
+      - 'Stm_DiamondCityExpansion_x_LowerVolume.esp'
+    clean:
+      - crc: 0xD96D34F6
+        util: 'FO4Edit v4.1.5k'
+  - name: 'DiamondCity-PreVis-Ambience.esp'
+    inc: [ 'StoryWealthLocation-DiamondCity.esp' ]
+    msg:
+      - <<: *alreadyInX
+        subs: [ '[A StoryWealth Location - Diamond City](https://www.nexusmods.com/fallout4/mods/64140/)' ]
+        condition: 'active("StoryWealthLocation-DiamondCity.esp")'
+    clean:
+      - crc: 0x6F73BED5
+        util: 'FO4Edit v4.1.5k'
+
   - name: 'ELFX-(PreVis|eXoPatch|DCGuard_Overhaul|Firelance2\.5|Hunkered Down|IntWayneGorski|OAR|Phase4DLC|TrainBar)\.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/64990/'
@@ -8554,12 +8581,6 @@ plugins:
     clean:
       - crc: 0xB1359D8F
         util: 'FO4Edit v4.0.4'
-
-  - name: 'DiamondCity-PreVis.esp'
-    url:
-      - link: 'https://www.nexusmods.com/fallout4/mods/66724/'
-        name: 'Diamond City Expansion - eXoPatch'
-    after: [ 'PRP.esp' ]
 
   - name: 'Diello_ExtraIconsForFIS.esp'
     url:
