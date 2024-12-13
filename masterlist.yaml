@@ -3817,7 +3817,6 @@ plugins:
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/22166/'
         name: 'Player Comments and Head Tracking'
-    after: [ 'StartMeUp.esp' ]
     dirty:
       - <<: *quickClean
         crc: 0xCA93C583
@@ -3947,51 +3946,125 @@ plugins:
         util: '[FO4Edit v4.0.4c](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 2
 
-  - name: '.*StartMeUp.*\.esp'
+  - name: 'StartMeUp.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/18946/'
         name: 'Start Me Up'
       - link: 'https://www.nexusmods.com/fallout4/mods/56984/'
         name: 'Start Me Up Redux'
-  - name: 'StartMeUp.esp'
     inc:
+      - 'AnotherLife.esp'
       - 'DualSurvivors.esp'
       - 'Interview.esp'
       - 'Killable Children.esp'
       - 'NoraSpouse.esm'
-      - 'WastelandOperator.esp'
+      - 'OSM_AlternateStart_Protocol-InfiniteAnswer.esp'
+      - 'SKKFastStartNewGame.esp'
+      - 'SKKSyntheticPlayer.esp'
+      - name: 'WastelandOperator.esp'
+        condition: 'version("StartMeUp.esp", "6.7", >=)'
     msg:
       - <<: *obsolete
         subs: [ '[Start Me Up Redux](https://www.nexusmods.com/fallout4/mods/56984/)' ]
         condition: 'version("StartMeUp.esp", "6.7", <)'
-      - <<: *patch3rdParty
-        subs:
-          - 'Amazing FollowerTweaks'
-          - '[AFT Collection of Patches (No Spouse and More)](https://www.nexusmods.com/fallout4/mods/59699/) (No Spouse Companion)'
-        condition: 'active("AmazingFollowerTweaks.esp") and not checksum("AmazingFollowerTweaks.esp", B353FED0)'
       - <<: *patchIncluded
         subs: [ 'DLC Nuka-World' ]
-        condition: 'active("DLCNukaWorld.esm") and not active("StartMeUpNukaWorldPatch.esp")'
+        condition: 'version("StartMeUp.esp", "6.7", >=) and active("DLCNukaWorld.esm") and not active("StartMeUpNukaWorldPatch.esp")'
       - <<: *patchProvided
-        subs: [ 'Horizon' ]
-        condition: 'active("Z_Horizon.esp") and not active("StartMeUpRedux_Horizon.esp")'
+        subs: [ 'DLC Far Harbor' ]
+        condition: 'version("StartMeUp.esp", "6.7", <) and active("DLCCoast.esm") and not active("StartMeUpFarHarborPatch.esp")'
+      - <<: *patchProvided
+        subs: [ 'DLC Nuka-World' ]
+        condition: 'version("StartMeUp.esp", "6.7", <) and active("DLCNukaWorld.esm") and not active("StartMeUpNukaWorldPatch.esp")'
     clean:
+      # Basic
+      - crc: 0x2A8C9385
+        util: 'FO4Edit v4.1.5k'
       # FDI
-      - crc: 0x29DC9048
-        util: 'FO4Edit v4.0.4c'
+      - crc: 0x0E2861FA
+        util: 'FO4Edit v4.1.5k'
       # Normal-XDI
-      - crc: 0xC1DA3B8B
-        util: 'FO4Edit v4.0.4c'
+      - crc: 0x0EB1FB7E
+        util: 'FO4Edit v4.1.5k'
+      # Redux FDI
+      - crc: 0x71A97283
+        util: 'FO4Edit v4.1.5k'
+      # Redux Normal-XDI
+      - crc: 0x6652871D
+        util: 'FO4Edit v4.1.5k'
+  ### Start Me Up Both Versions - Patches ###
   - name: 'StartMeUpNukaWorldPatch.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/18946/'
+        name: 'Start Me Up'
+      - link: 'https://www.nexusmods.com/fallout4/mods/56984/'
+        name: 'Start Me Up Redux'
+    dirty:
+      # FDI
+      - <<: *quickClean
+        crc: 0xCAC97332
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 2
+      # Normal-XDI
+      - <<: *quickClean
+        crc: 0x1F650480
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 2
+      # Redux FDI
+      - <<: *quickClean
+        crc: 0x90CA0F0C
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 2
+      # Redux Normal-XDI
+      - <<: *quickClean
+        crc: 0xD797797D
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 2
+  ### Start Me Up Original - Patches ###
+  - name: 'StartMeUp(FarHarborPatch| VIS)\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/18946/'
+        name: 'Start Me Up'
+  - name: 'StartMeUpFarHarborPatch.esp'
+    msg:
+      - <<: *alreadyInX
+        subs: [ 'Start Me Up Redux' ]
+        condition: 'version("StartMeUp.esp", "5.0", >=)'
     clean:
       # FDI
-      - crc: 0x6A96C646
-        util: 'FO4Edit v4.0.4c'
+      - crc: 0xACC01679
+        util: 'FO4Edit v4.1.5k'
       # Normal-XDI
-      - crc: 0x6E0B1BE9
-        util: 'FO4Edit v4.0.4c'
+      - crc: 0x59EC18DE
+        util: 'FO4Edit v4.1.5k'
+  - name: 'StartMeUp VIS.esp'
+    clean:
+      - crc: 0xC3637BA8
+        util: 'FO4Edit v4.1.5k'
+  ### Start Me Up Redux - Patches ###
+  - name: '(StartMeUp( Killable Synth Shaun|ShaunDefaultAppearance)|PlayerCommentsStartMeUpPiperFix)\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/56984/'
+        name: 'Start Me Up Redux'
+  - name: 'PlayerCommentsStartMeUpPiperFix.esp'
+    req:
+      - name: 'PlayerCommentsStartMeUpPatch.esp'
+        display: '[Player Comments - Start Me Up Universal Patch](https://www.nexusmods.com/fallout4/mods/22166/)'
+    dirty:
+      - <<: *quickClean
+        crc: 0x3A27B98D
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 11
+  - name: 'StartMeUp Killable Synth Shaun.esp'
+    after: [ 'StartMeUpShaunDefaultAppearance.esp' ]
+    clean:
+      - crc: 0xF88A1E51
+        util: 'FO4Edit v4.1.5k'
   - name: 'StartMeUpShaunDefaultAppearance.esp'
     msg: [ *optional ]
+    clean:
+      - crc: 0xAD49CDCC
+        util: 'FO4Edit v4.1.5k'
 
   - name: 'WhoIsTheGeneral.esp'
     url:
