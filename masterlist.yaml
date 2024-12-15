@@ -4498,6 +4498,36 @@ plugins:
       - 'BostonFPSFixAutomatron.esp'
       - 'PRP.esp'
 
+  - name: 'CombatZoneRestored.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/21498/'
+        name: 'Combat Zone Restored'
+      - link: 'https://www.nexusmods.com/fallout4/mods/59329/'
+        name: 'Combat Zone Restored - Restored'
+    after:
+      - 'Clarity.esp'
+      - 'EnhancedLightsandFX.esp'
+      - 'InteriorsEnhanced-All-In-One.esp'
+      - 'prp.esp'
+      - 'UltraInteriorLighting.esp'
+    msg:
+      - <<: *patchUpdateAvailable
+        subs: [ '[Combat Zone Restored - Restored](https://www.nexusmods.com/fallout4/mods/59329/)' ]
+        condition: 'checksum("CombatZoneRestored.esp", 74BE02DE)'
+      - <<: *requiresResources
+        type: error
+        subs: [ '[Combat Zone Restored](https://www.nexusmods.com/fallout4/mods/21498/)' ]
+        condition: 'not file("CombatZoneRestored - Main.BA2") and not file("CombatZoneRestored - Textures.BA2")'
+    dirty:
+      - <<: *reqManualFix
+        crc: 0x74BE02DE
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        nav: 1
+      - <<: *quickClean
+        crc: 0x54E0CB42
+        util: '[FO4Edit v4.1.5k](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 2
+
   - name: 'CountyCrossing_DCnR_F-ESL.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/65048/'
@@ -6938,14 +6968,6 @@ plugins:
         util: '[FO4Edit v4.0.2f](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 5
         udr: 2
-  - name: 'CombatZoneRestored.esp'
-    url: [ 'https://www.nexusmods.com/fallout4/mods/21498/' ]
-    dirty:
-      # 1.02
-      - <<: *reqManualFix
-        crc: 0x74BE02DE
-        util: '[FO4Edit v4.0.2f](https://www.nexusmods.com/fallout4/mods/2737)'
-        nav: 1
 
 # Subway Runner
   - name: 'subwayrunnnerdynamiclighting.esp'
