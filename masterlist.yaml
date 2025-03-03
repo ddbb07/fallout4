@@ -3866,7 +3866,7 @@ plugins:
         util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 18
     clean:
-        #Original
+        # Original
       - crc: 0x8A9010FA
         util: 'FO4Edit v4.1.5f'
         # Bugfix
