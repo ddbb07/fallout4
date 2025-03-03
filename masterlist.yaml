@@ -3850,6 +3850,29 @@ plugins:
         util: '[FO4Edit v4.0.3h (Hotfix 1)](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 133
 
+  - name: 'BetterOpenSeason.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/30509/'
+        name: 'Minutemen Takeover - Nuka World'
+      - link: 'https://www.nexusmods.com/fallout4/mods/58248/'
+        name: 'Minutemen Take Over Nuka World Bugfix'
+    msg:
+      - <<: *useInstead
+        subs: [ '[Minutemen Take Over Nuka World Bugfix](https://www.nexusmods.com/fallout4/mods/58248)' ]
+        condition: 'checksum("BetterOpenSeason.esp", 5D36CF8E) or checksum("BetterOpenSeason.esp", 8A9010FA)'
+    dirty:
+      - <<: *quickClean
+        crc: 0x5D36CF8E
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 18
+    clean:
+        #Original
+      - crc: 0x8A9010FA
+        util: 'FO4Edit v4.1.5f'
+        # Bugfix
+      - crc: 0x019DBD45
+        util: 'FO4Edit v4.1.5f'
+
   - name: 'CWPointLookoutFO4(Patch)?\.es[lm]'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/60330/'
@@ -3892,6 +3915,19 @@ plugins:
         util: '[FO4Edit v4.0.3h (Hotfix 1)](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 40
         udr: 14
+
+  - name: 'OutcastsAndRemnants.esp'
+    url: [ 'https://www.nexusmods.com/fallout4/mods/21469/' ]
+    dirty:
+      - <<: *reqManualFix
+        crc: 0x550A22CE
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 4
+        nav: 1
+      - <<: *reqManualFix
+        crc: 0x4AA09552
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        nav: 1
 
   - name: 'SKKFastBOS.esp'
     url:
@@ -4762,6 +4798,12 @@ plugins:
       # ELFX
       - crc: 0xAD111166
         util: 'FO4Edit v4.1.5k'
+
+  - name: 'Rebuild_Settlements_Previs.esp'
+    url: [ 'https://www.nexusmods.com/fallout4/mods/79618' ]
+    group: *preVisCombinedGroup
+    after: [ 'prp.esp' ]
+
   # More Uniques - Unique Weapons Expansion Patch #
   - name: 'PLIUSAFSSO_MU_Patch.esp'
     clean:
@@ -6165,6 +6207,14 @@ plugins:
         name: 'Sim Settlements 2 (Nexus Mods)'
       - link: 'https://bethesda.net/en/mods/fallout4/mod-detail/4183663/'
         name: 'Sim Settlements 2 (Bethesda.net Mods)'
+    dirty:
+      - <<: *quickClean
+        crc: 0xEFA5DEE6
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 2
+    clean:
+      - crc: 0x62056C3C
+        util: 'FO4Edit v4.1.5f'
     inc:
       - name: 'Conquest.esp'
         display: 'Conquest - Build New Settlements and Camping'
@@ -6184,6 +6234,49 @@ plugins:
           - '[Horizon](https://www.nexusmods.com/fallout4/mods/17374/)'
           - '[Sim Settlements 2 - Horizon Patch](https://www.nexusmods.com/fallout4/mods/54186/)'
         condition: 'active("Z_Horizon.esp") and not active("SS_Addon_Horizon.esp")'
+
+  - name: 'SS2_XPAC_Chapter2.esm'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/55817/'
+        name: 'Sim Settlements 2 - Chapter 2 (Nexus Mods)'
+      - link: 'https://bethesda.net/en/mods/fallout4/mod-detail/4247081/'
+        name: 'Sim Settlements 2 - Chapter 2 (Bethesda.net Mods)'
+    msg:
+      - <<: *patch3rdParty
+        subs:
+          - '[Flashy(JoeR) - Gun For Hire - Commonwealth Mercenary Jobs](https://www.nexusmods.com/fallout4/mods/58431/)'
+          - '[Sim Settlements 2 Chapter 2 - Gun For Hire - Door Patch](https://www.nexusmods.com/fallout4/mods/56550/)'
+        condition: 'active("Flashy_CrimeAndPunishment_GunForHire_Addon.esp") and not active("SS2_GunForHire_Patch.esp")'
+
+  - name: 'SS2_XPAC_Chapter3.esm'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/73394/'
+        name: 'Sim Settlements 2 - Chapter 3 (Nexus Mods)'
+      - link: 'https://mods.bethesda.net/en/fallout4/mod-detail/4338646/'
+        name: 'Sim Settlements 2 - Chapter 3 (Bethesda.net Mods)'
+    dirty:
+      - <<: *quickClean
+        crc: 0xAF7100E8
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 32
+    clean:
+      - crc: 0x2E9877AB
+        util: 'FO4Edit v4.1.5f'
+
+  - name: 'SS2Extended.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/47976/'
+        name: 'Sim Settlements 2 (Nexus Mods)'
+      - link: 'https://mods.bethesda.net/en/fallout4/mod-detail/4259846/'
+        name: 'Sim Settlements 2 - Extended (Bethesda.net Mods)'
+    dirty:
+      - <<: *quickClean
+        crc: 0xA083CF25
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 14
+    clean:
+      - crc: 0xC044B460
+        util: 'FO4Edit v4.1.5f'
 
   - name: 'ohSIM_Sim2_Settlements_Scrappers_Addon.esp'
     url:
@@ -6239,19 +6332,6 @@ plugins:
           - '[Horizon](https://www.nexusmods.com/fallout4/mods/17374/)'
           - '[Sim Settlements 2 - Horizon Patch](https://www.nexusmods.com/fallout4/mods/54186/)'
         condition: 'active("Z_Horizon.esp") and not active("Z_Horizon_SS2_WastelandVenturers.esp")'
-
-  - name: 'SS2_XPAC_Chapter2.esm'
-    url:
-      - link: 'https://www.nexusmods.com/fallout4/mods/55817/'
-        name: 'Sim Settlements 2 - Chapter 2 (Nexus Mods)'
-      - link: 'https://bethesda.net/en/mods/fallout4/mod-detail/4247081/'
-        name: 'Sim Settlements 2 - Chapter 2 (Bethesda.net Mods)'
-    msg:
-      - <<: *patch3rdParty
-        subs:
-          - '[Flashy(JoeR) - Gun For Hire - Commonwealth Mercenary Jobs](https://www.nexusmods.com/fallout4/mods/58431/)'
-          - '[Sim Settlements 2 Chapter 2 - Gun For Hire - Door Patch](https://www.nexusmods.com/fallout4/mods/56550/)'
-        condition: 'active("Flashy_CrimeAndPunishment_GunForHire_Addon.esp") and not active("SS2_GunForHire_Patch.esp")'
 
 ###### Anything new can go after this (if you're not sure where to put it) ######
   # Radrose Usability Enhancements
