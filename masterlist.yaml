@@ -4795,6 +4795,25 @@ plugins:
       # ELFX
       - crc: 0xAD111166
         util: 'FO4Edit v4.1.5k'
+
+  - name: 'Rebuild_Settlements.esp'
+    url: [ 'https://www.nexusmods.com/fallout4/mods/79618' ]
+    dirty:
+      - <<: *quickClean
+        crc: 0x7CA58943
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 3
+    clean:
+      - crc: 0x7242E237
+        util: 'FO4Edit v4.1.5f'
+  - name: 'Rebuild_Settlements_Previs.esp'
+    url: [ 'https://www.nexusmods.com/fallout4/mods/79618' ]
+    group: *preVisCombinedGroup
+    after: [ 'prp.esp' ]
+    clean:
+      - crc: 0xA83F95AD
+        util: 'FO4Edit v4.1.5f'
+
   # More Uniques - Unique Weapons Expansion Patch #
   - name: 'PLIUSAFSSO_MU_Patch.esp'
     clean:
