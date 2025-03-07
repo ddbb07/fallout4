@@ -4796,8 +4796,11 @@ plugins:
       - crc: 0xAD111166
         util: 'FO4Edit v4.1.5k'
 
+  - name: 'Rebuild_Settlements(_Previs|_NoRepair)?\.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/79618/'
+        name: 'The Rebuild Collection - AIO'
   - name: 'Rebuild_Settlements.esp'
-    url: [ 'https://www.nexusmods.com/fallout4/mods/79618' ]
     dirty:
       - <<: *quickClean
         crc: 0x7CA58943
@@ -4806,8 +4809,11 @@ plugins:
     clean:
       - crc: 0x7242E237
         util: 'FO4Edit v4.1.5f'
+  - name: 'Rebuild_Settlements_NoRepair.esp'
+    clean:
+      - crc: 0xB471F97F
+        util: 'FO4Edit v4.1.5f'
   - name: 'Rebuild_Settlements_Previs.esp'
-    url: [ 'https://www.nexusmods.com/fallout4/mods/79618' ]
     group: *preVisCombinedGroup
     after: [ 'prp.esp' ]
     clean:
