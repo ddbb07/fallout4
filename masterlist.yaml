@@ -3858,6 +3858,20 @@ plugins:
         util: '[FO4Edit v4.0.3h (Hotfix 1)](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 133
 
+  - name: 'BetterOpenSeason.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/30509/'
+        name: 'Minutemen Takeover - Nuka World'
+    dirty:
+      - <<: *quickClean
+        crc: 0x5D36CF8E
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
+        itm: 18
+    clean:
+        # Original
+      - crc: 0x8A9010FA
+        util: 'FO4Edit v4.1.5f'
+
   - name: 'CWPointLookoutFO4(Patch)?\.es[lm]'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/60330/'
