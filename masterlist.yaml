@@ -3889,15 +3889,26 @@ plugins:
     req:
       - name: 'XDI.esm'
         display: '[Extended Dialogue Interface](https://www.nexusmods.com/fallout4/mods/27216/)'
+    msg:
+      - <<: *patchUpdateAvailable
+        type: warn
+        subs: [ '[Fallout 4 Point Lookout - Patch - 1.14](https://www.nexusmods.com/fallout4/mods/60330/)' ]
+        condition: 'not active("CWPointLookoutFO4Patch.esl")'
+      - <<: *alsoUseX
+        subs: [ '[Point Lookout - Essential Fixes and Additions](https://www.nexusmods.com/fallout4/mods/86304/)' ]
+        condition: 'not active("CWPointLookoutFO4FixesAndAdditions.esp")'
     dirty:
       - <<: *quickClean
         crc: 0x0E34764D
-        util: '[FO4Edit v4.0.4b](https://www.nexusmods.com/fallout4/mods/2737)'
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 78
+    clean:
+      - crc: 0xDF00D280
+        util: 'FO4Edit v4.1.5f'
   - name: 'CWPointLookoutFO4Patch.esl'
     clean:
-      - crc: 0x74955B3E
-        util: 'FO4Edit v4.0.4b'
+      - crc: 0xDFE56706
+        util: 'FO4Edit v4.1.5f'
 
   - name: 'NukaWorldReborn.esp'
     url:
