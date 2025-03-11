@@ -3910,6 +3910,14 @@ plugins:
       - crc: 0xDFE56706
         util: 'FO4Edit v4.1.5f'
 
+  - name: 'CWPointLookoutFO4FixesAndAdditions.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/86304/'
+        name: 'Point Lookout - Essential Fixes and Additions'
+    clean:
+      - crc: 0x9282A3D2
+        util: 'FO4Edit v4.1.5f'
+
   - name: 'NukaWorldReborn.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/32857/'
