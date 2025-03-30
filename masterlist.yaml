@@ -3951,6 +3951,24 @@ plugins:
         util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737)'
         nav: 1
 
+  - name: 'sectorv.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/38457/'
+        name: 'Sector Five - Rise and Fall'
+    msg:
+      - <<: *patch3rdParty_REFPH
+        condition: 'active("REFramework.esm") and not active("REPatch_SectorFiveRiseAndFall.esp")'
+    dirty:
+      - <<: *reqManualFix
+        crc: 0xC69F0A84
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737/)'
+        itm: 13
+        nav: 2
+      - <<: *reqManualFix
+        crc: 0xF18A7218
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737/)'
+        nav: 2
+
   - name: 'SKKFastBOS.esp'
     url:
       - 'https://bethesda.net/en/mods/fallout4/mod-detail/4055555/'
