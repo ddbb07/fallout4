@@ -4436,6 +4436,17 @@ plugins:
         util: 'FO4Edit v4.0.3h (Hotfix 1)'
 
 ###### Items - New Weapons ######
+  - name: 'AutoAxe.esl'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/49514/'
+        name: 'Capital Wasteland Auto Axe'
+    msg:
+      - <<: *patch3rdParty_REFPH
+        condition: 'active("REFramework.esm") and not active("REPatch_AutoAxe.esp")'
+    clean:
+      - crc: 0xD1643403
+        util: 'FO4Edit v4.1.5f'
+
   - name: 'CROSS_PlasRail.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/13850/' ]
     dirty:
