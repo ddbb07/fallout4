@@ -3907,6 +3907,33 @@ plugins:
       - crc: 0x9282A3D2
         util: 'FO4Edit v4.1.5f'
 
+  - name: 'Flashy_CrimeAndPunishment_GunForHire_Addon.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/58431/'
+        name: 'Flashy(JoeR) - Gun For Hire - Commonwealth Mercenary Jobs'
+    msg:
+      - <<: *patch3rdParty_REFPH
+        condition: 'active("REFramework.esm") and not active("REPatch_CrimeAndPunishmentGunForHire.esp")'
+      - <<: *patchIncluded
+        subs: [ 'Diamond City Outskirts' ]
+        condition: 'active("DiamondNewVendors.esp") and not active("GFH_DCO_Patch.esp")'
+      - <<: *patchIncluded
+        subs: [ 'Killable Children' ]
+        condition: 'active("Killable Children.esp") and not active("Flashy_GunForHire_KillableChildrenPatch.esp")'
+      - <<: *patchIncluded
+        subs: [ 'Fallout 2287 - Nuclear Winter' ]
+        condition: 'active("Nuclear Winter.esp") and not active("Flashy_GFH_NuclearWinterPatch.esp")'
+    dirty:
+      - <<: *reqManualFix
+        crc: 0xE319EE5D
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737/)'
+        itm: 5
+        nav: 1
+      - <<: *reqManualFix
+        crc: 0xBA0BE459
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737/)'
+        nav: 1
+
   - name: 'NukaWorldReborn.esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/32857/'
