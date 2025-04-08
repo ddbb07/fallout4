@@ -3836,6 +3836,23 @@ plugins:
         itm: 6
 
 ###### Gameplay - Quests ######
+  - name: 'America Rising - A Tale of the Enclave.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/23923/'
+        name: 'America Rising - A Tale of the Enclave'
+    msg:
+      - <<: *patch3rdParty_REFPH
+        condition: 'active("REFramework.esm") and not active("REPatch_AmericaRisingATaleOfTheEnclave.esp")'
+    dirty:
+      - <<: *quickClean
+        crc: 0xF0DCC10B
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737/)'
+        itm: 1002
+        udr: 97
+    clean:
+      - crc: 0x75DA3F6A
+        util: 'FO4Edit v4.1.5f'
+
   - name: 'AnotherLife.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/14253/' ]
     inc:
