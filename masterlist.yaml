@@ -3850,6 +3850,17 @@ plugins:
         itm: 1002
         udr: 97
 
+  - name: 'AmericaRising2.esm'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/75767/'
+        name: 'America Rising 2 - Legacy of the Enclave'
+    msg:
+      - <<: *patch3rdParty_REFPH
+        condition: 'active("REFramework.esm") and not active("REPatch_AmericaRising2LegacyOfTheEnclave.esp")'
+    clean:
+      - crc: 0xCB447FD8
+        util: 'FO4Edit v4.1.5f'
+
   - name: 'AnotherLife.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/14253/' ]
     inc:
