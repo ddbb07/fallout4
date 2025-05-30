@@ -2216,13 +2216,17 @@ plugins:
         name: 'Previsibines Repair Pack Stable Branch - PRP'
   - name: 'ppf.esm'
     group: *frameworksGroup
-    clean:
+    dirty:
       # OG
-      - crc: 0x066BE434
-        util: 'FO4Edit v4.1.5f'
+      - <<: *quickClean
+        crc: 0x921ACC01
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737/)'
+        itm: 1
       # NG
-      - crc: 0x16C77309
-        util: 'FO4Edit v4.1.5f'
+      - <<: *quickClean
+        crc: 0xDE27D2C2
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737/)'
+        itm: 1
   - name: 'prp.esp'
     group: *preVisCombinedGroup
     inc:
