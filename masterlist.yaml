@@ -1840,9 +1840,11 @@ plugins:
       # - Sound
       # - Stats
       # - Text
-    clean:
-      - crc: 0xB838A1FD
-        util: 'FO4Edit v4.1.5f'
+    dirty:
+      - <<: *quickClean
+        crc: 0x6A58243F
+        util: '[FO4Edit v4.1.5f](https://www.nexusmods.com/fallout4/mods/2737/)'
+        itm: 2
 
   - name: 'CompanionBugfixExperimental.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/2679/' ]
