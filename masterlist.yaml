@@ -4300,14 +4300,48 @@ plugins:
       - crc: 0xAD49CDCC
         util: 'FO4Edit v4.1.5k'
 
-  - name: 'WhoIsTheGeneral.esp'
+  - name: '(WhoIsTheGeneral|WTG( - |_)(CMRQL|CTI|KRIC|KCR|MRS|PGNRSQ|RQIC|RSFMQ|CMRQL - KRIC)( |_)Patch).esp'
     url:
       - link: 'https://www.nexusmods.com/fallout4/mods/59019/'
         name: 'Who''s The General - Minutemen Quest Cleanup'
+  - name: 'WhoIsTheGeneral.esp'
     after: [ 'PiperCaitCurieDialogueOverhaul.esp' ]
+    msg:
+      - <<: *patchProvided
+        subs: [ 'Configurable Minutemen Radiant Quest Limits And Fixes' ]
+        condition: 'active("CMRQL.esp") and not active("WTG - CMRQL Patch.esp") and not active("Keep Radiants In Commonwealth.esp")'
+      - <<: *patchProvided
+        subs: [ 'Conquer the Institute' ]
+        condition: 'active("Conquer the Institute.esp") and not active("WTG - CTI Patch.esp")'
+      - <<: *patchProvided
+        subs: [ 'Keep Radiants in the Commonwealth' ]
+        condition: 'active("Keep Radiants In Commonwealth.esp") and not active("WTG - KRIC Patch.esp") and not active("CMRQL.esp")'
+      - <<: *patchProvided
+        subs: [ 'Keeper of the Commonwealth Radiants' ]
+        condition: 'active("Keeper of the Commonwealth Radiants.esp") and not active("WTG_KCR_Patch.esp")'
+      - <<: *patchProvided
+        subs: [ 'Minutemen (Radiant) Squads' ]
+        condition: 'active("MMSquads.esp") and not active("WTG - MRS Patch.esp")'
+      - <<: *patchProvided
+        subs: [ 'Preston Garvey No Radiant Settlement Quests' ]
+        condition: 'active("PrestonNoRadiant.esp") and not active("WTG_PGNRSQ_Patch.esp")'
+      - <<: *patchProvided
+        subs: [ 'Radiant Questing in the Commonwealth' ]
+        condition: 'active("Radiant_Questing_in_the_Commonwealth.esp") and not active("WTG - RQIC Patch.esp")'
+      - <<: *patchProvided
+        subs: [ 'Random Settlements for Minutemen Quests' ]
+        condition: 'active("Random Settlements For Minutemen Quests.esp.esp") and not active("WTG_RSFMQ_Patch.esp")'
+      - <<: *patchProvided
+        subs: [ 'Configurable Minutemen Radiant Quest Limits And Fixes & Keep Radiants in the Commonwealth' ]
+        condition: 'active("CMRQL.esp") and active("Keep Radiants In Commonwealth.esp") and not active("WTG - CMRQL - KRIC Patch.esp")'
     clean:
-      - crc: 0x34DCB32F
-        util: 'FO4Edit v4.0.4b'
+      - crc: 0x191EDA88
+        util: 'FO4Edit v4.1.5f'
+  - name: 'WTG - (CMRQL|KRIC) Patch.esp'
+    msg:
+      - <<: *alreadyInX
+        subs: [ 'Who''s the General - Merged Patch - CMRQL - KRIC' ]
+        condition: 'active("WTG - CMRQL - KRIC Patch.esp")'
 
 ###### Gameplay - Skills, Perks & Leveling ######
   - name: 'Freeze( - Vanilla Patch)?\.esp'
